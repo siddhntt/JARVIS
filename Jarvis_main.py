@@ -18,7 +18,7 @@ def takeCommand():
         print("Listening .....")
         r.pause_threshold = 1
         r.energy_threshold = 300
-        audio = r.listen(source, timeout=15, phrase_time_limit=10)
+        audio = r.listen(source, timeout=30, phrase_time_limit=10)
 
     try:
         print("Understanding.....")
@@ -47,6 +47,8 @@ if __name__ == "__main__":
                     speak("Hello sir!, How are you doing?")
                 elif "i am fine" in query:
                     speak("That's great to hear sir!")
+                elif "good job" in query:
+                    speak("I am happy that you liked it sir!")
                 elif "how are you" in query:
                     speak("I'm perfect sir!")
                 elif "thank you" in query:
@@ -63,16 +65,19 @@ if __name__ == "__main__":
                     searchWikipedia(query)
 
                 elif "temperature" in query:
-                    search = "temperature in Naya Raipur"
-                    url = f"https://search.brave.com/search?q={search}"
-                    r = requests.get(url)
-                    data = BeautifulSoup(r.text, "html.parser")
-                    temp = data.find("div", class_="BNeawe iBp4i AP7Wnd").text
-                    speak(f"current {search} is {temp}")
+                     search = "temperature in Naya Raipur"
+                     url = f"https://search.brave.com/search?q={search}"
+                     r = requests.get(url)
+                     data = BeautifulSoup(r.text, "html.parser")
+                     temp = data.find("div", class_ = "BNeawe")
+                     if temp:
+                         speak(f"current {search} is {temp.text}")
+                     else:
+                         speak("Sorry, I couldn't find the temperature information.")
                 elif "weather" in query:
-                    search = "temperature in Naya Raipur"
-                    url = f"https://search.brave.com/search?q={search}"
-                    search = "temperature in Naya Raipur"
-                    url = f"https://www.google.com/search?q={search}"
-                    temp = data.find("div", class_ = "BNeawe").text
-                    speak(f"current {search} is {temp}")
+                     search = "temperature in Naya Raipur"
+                     url = f"https://search.brave.com/search?q={search}"
+                     r = requests.get(url)
+                     data = BeautifulSoup(r.text, "html.parser")
+                     temp = data.find("div", class_ = "BNeawe").text
+                     speak(f"current {search} is {temp}")
