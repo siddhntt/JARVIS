@@ -32,6 +32,14 @@ def takeCommand():
         return "None"
     return query
 
+
+def alarm(query):
+    timehere = open("Alarmtext.txt", "a")
+    timehere.write(query)
+    timehere.close()
+    os.startfile(alarm.py)
+
+
 if __name__ == "__main__":
     while True:
         query = takeCommand().lower()
@@ -90,6 +98,15 @@ if __name__ == "__main__":
                         speak(f"The current temperature in {location} is {temp}")
                      else:
                         speak(f"Sorry, I couldn't find anything for {search}.")
+
+# It is not taking the input from the user to set the alarm.                
+                elif "set an alarm" in query:
+                    print("Input time example: 10 and 10 and 10")
+                    speak("What time do you want to set the alarm for?")
+                    a = input("Please tell the time sir: ")
+                    alarm(a)
+                    speak("Alarm set sir!")
+
 
                 elif "time" in query:
                     strTime = datetime.datetime.now().strftime("%H:%M")
