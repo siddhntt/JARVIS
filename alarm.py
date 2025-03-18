@@ -22,7 +22,7 @@ deletetime.close()
 
 def ring(time):
     timeset = str(time)
-    timenow = timeset.relpace("jarvis", "")
+    timenow = timeset.replace("jarvis", "")
     timenow = timenow.replace("set an alarm", "")
     timenow = timenow.replace("for", "")
     timenow = timenow.replace("alarm", "")

@@ -1,4 +1,5 @@
 import datetime
+import os
 import pyttsx3
 import speech_recognition as sr
 import requests
@@ -19,8 +20,7 @@ def takeCommand():
         print("Listening .....")
         r.pause_threshold = 1
         r.energy_threshold = 300
-        audio = r.listen(source, timeout=30, phrase_time_limit=10)
-
+        audio = r.listen(source)
     try:
         print("Understanding.....")
         query = r.recognize_google(audio, language='en-in')
@@ -37,7 +37,7 @@ def alarm(query):
     timehere = open("Alarmtext.txt", "a")
     timehere.write(query)
     timehere.close()
-    os.startfile(alarm.py)
+    os.startfile("alarm.py")
 
 
 if __name__ == "__main__":
@@ -61,7 +61,7 @@ if __name__ == "__main__":
                     speak("I am happy that you liked it sir!")
                 elif "how are you" in query or "how r u" in query:
                     speak("I'm perfect sir!")
-                elif "thank you" in query or "thanks" in query or "thank u" in query:
+                elif "thank you" in query or "thanks" in query or "thank u" in query or "thankyou" in query:
                     speak("You're welcome sir!")
 
 
@@ -98,8 +98,7 @@ if __name__ == "__main__":
                         speak(f"The current temperature in {location} is {temp}")
                      else:
                         speak(f"Sorry, I couldn't find anything for {search}.")
-
-# It is not taking the input from the user to set the alarm.                
+                
                 elif "set an alarm" in query:
                     print("Input time example: 10 and 10 and 10")
                     speak("What time do you want to set the alarm for?")
