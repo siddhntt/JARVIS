@@ -11,10 +11,12 @@ def speak(audio):
     engine.say(audio)  
     engine.runAndWait()
 
-extractedtime = open("Alarmtext.txt", "rt")
-time = extractedtime.read()
+
+# extractedtime = open("Alarmtext.txt", "rt")
+# time = open("Alarmtext.txt", "a")
+time = input("Enter Time : ")
 Time = str(time)
-extractedtime.close()
+# extractedtime.close()
 
 deletetime = open("Alarmtext.txt", "r+")
 deletetime.truncate(0)
@@ -31,7 +33,9 @@ def ring(time):
     print(Alarmtime)
     while True:
         currenttime = datetime.datetime.now().strftime("%H:%M:%S")
+        print(currenttime)
         if currenttime == Alarmtime:
+            print("Limit reached")
             speak("Wake up sir!")
             os.startfile("music.mp3")
         elif currenttime + "00:00:30" == Alarmtime:
