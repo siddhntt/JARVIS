@@ -34,9 +34,6 @@ def takeCommand():
 
 
 def alarm(query):
-    # timehere = open("Alarmtext.txt", "a")
-    # timehere.write(query)
-    # timehere.close()
     os.startfile("alarm.py")
 
 
@@ -102,8 +99,6 @@ if __name__ == "__main__":
                 elif "set an alarm" in query:
                     print("Input time example: 15:15:15")
                     speak("What time do you want to set the alarm for?")
-                    # time = input("Enter Time : ")
-                    # alarm(time)
                     alarm(query)
                     speak("Alarm set sir!")
 
