@@ -4,6 +4,10 @@ import pyttsx3
 import speech_recognition as sr
 import requests
 from bs4 import BeautifulSoup
+import pyautogui
+import random
+
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -60,6 +64,42 @@ if __name__ == "__main__":
                     speak("I'm perfect sir!")
                 elif "thank you" in query or "thanks" in query or "thank u" in query or "thankyou" in query:
                     speak("You're welcome sir!")
+                
+
+                # elif "tired" in query:
+                #     speak("Playing your favourite songs sir!")
+                #     a = (1,2,3)
+                #     b = random.choice(a)
+                #     if b == 1:
+                #         os.startfile("music1.mp3")
+
+                
+
+                elif "pause" in query:
+                    pyautogui.press("k")
+                    speak("Paused sir!")
+                elif "play" in query:
+                    pyautogui.press("k")
+                    speak("Playing sir!")
+                elif "mute" in query:
+                    pyautogui.press("m")
+                    speak("Muted sir!")
+                elif "unmute" in query:
+                    pyautogui.press("m")
+                    speak("Unmuted sir!")
+                elif "volume up" in query:
+                    from keyboard import volumeup
+                    volumeup()
+                    speak("Volume increased sir!")
+                elif "volume down" in query:
+                    from keyboard import volumedown
+                    volumedown()
+                    speak("Volume decreased sir!")
+
+# Want to add same things for Spotify
+
+
+                
 
 
                 elif "open" in query:
@@ -80,6 +120,11 @@ if __name__ == "__main__":
                 elif "wikipedia" in query:
                     from SearchNow import searchWikipedia
                     searchWikipedia(query)
+
+                elif "news" in query:
+                    from news import latestnews
+                    latestnews()
+
 
                 elif "temperature" in query:
                      speak("Please tell me the location for which you want to know the temperature.")
@@ -110,3 +155,16 @@ if __name__ == "__main__":
                 elif "sleep" in query:
                     speak("going to sleep sir!")
                     exit()
+
+
+                elif "remember that" in query:
+                    remembermessage = query.replace("remember that", "")
+                    remembermessage = remembermessage.replace("jarvis", "")
+                    speak("You told me" + remembermessage)
+                    remember = open("Remember.txt", "w")
+                    remember.write(remembermessage)
+                    remember.close() 
+                elif "what do you remember" in query:
+                    remember = open("Remember.txt", "r")
+                    speak("You told me" + remember.read())
+                    remember.close()

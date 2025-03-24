@@ -12,11 +12,8 @@ def speak(audio):
     engine.runAndWait()
 
 
-# extractedtime = open("Alarmtext.txt", "rt")
-# time = open("Alarmtext.txt", "a")
 time = input("Enter Time : ")
 Time = str(time)
-# extractedtime.close()
 
 deletetime = open("Alarmtext.txt", "r+")
 deletetime.truncate(0)
