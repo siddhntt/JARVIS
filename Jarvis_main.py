@@ -62,6 +62,8 @@ if __name__ == "__main__":
                     speak("I am happy that you liked it sir!")
                 elif "how are you" in query or "how r u" in query:
                     speak("I'm perfect sir!")
+                elif "what are you doing" in query:
+                    speak("I am waiting for your command sir!")
                 elif "thank you" in query or "thanks" in query or "thank u" in query or "thankyou" in query:
                     speak("You're welcome sir!")
                 
