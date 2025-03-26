@@ -127,6 +127,14 @@ if __name__ == "__main__":
                     from news import latestnews
                     latestnews()
 
+                
+                elif "calculate" in query:
+                    from Calculatenumbers import Calc
+                    from Calculatenumbers import WolfRamAlpha
+                    query = query.replace("jarvis", "")
+                    query = query.replace("calculate", "")
+                    Calc(query)
+
 
                 elif "temperature" in query:
                      speak("Please tell me the location for which you want to know the temperature.")
